@@ -3,11 +3,13 @@ import { View, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
-import Saved from "../screens/Saved";
-import Booking from "../screens/Booking";
-import Profile from "../screens/Profile";
+import HomeScreen from "../screens/HomeScreen";
+import SavedScreen from "../screens/SavedScreen";
+import BookingScreen from "../screens/BookingScreen";
+import Profile from "../screens/ProfileScreen";
+import SearchScreen from "../screens/SearchScreen";
 import { AntDesign, EvilIcons } from '@expo/vector-icons';
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,7 +21,7 @@ const StackNavigator = () => {
             <Tab.Navigator>
                 <Tab.Screen
                     name="Home"
-                    component={Home}
+                    component={HomeScreen}
                     options={{
                         tabBarLabel: "Home",
                         headerShown: false,
@@ -31,7 +33,7 @@ const StackNavigator = () => {
                 />
                 <Tab.Screen
                     name="Saved"
-                    component={Saved}
+                    component={SavedScreen}
                     options={{
                         tabBarLabel: "Saved",
                         headerShown: false,
@@ -43,7 +45,7 @@ const StackNavigator = () => {
                 />
                 <Tab.Screen
                     name="Booking"
-                    component={Booking}
+                    component={BookingScreen}
                     options={{
                         tabBarLabel: "Booking",
                         headerShown: false,
@@ -55,7 +57,7 @@ const StackNavigator = () => {
                 />
                 <Tab.Screen
                     name="Profile"
-                    component={Profile}
+                    component={ProfileScreen}
                     options={{
                         tabBarLabel: "Profile",
                         headerShown: false,
@@ -96,6 +98,13 @@ const StackNavigator = () => {
                             />
                         )
                     }}
+                />
+                <Stack.Screen 
+                  name="Search" 
+                  component={SearchScreen} 
+                  options={{
+                    headerShown: false
+                  }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

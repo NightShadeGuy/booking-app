@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import StackNavigator from './src/components/StackNavigator';
 import { ModalPortal } from 'react-native-modals';
 export default function App() {

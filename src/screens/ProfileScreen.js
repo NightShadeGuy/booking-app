@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Booking = () => {
+const ProfileScreen = () => {
     return (
         <View>
-            <Text>Booking screen</Text>
+            <Text>ProfileScreen</Text>
         </View>
     )
 }
 
-export default Booking;
+export default ProfileScreen;
