@@ -8,8 +8,9 @@ import SavedScreen from "../screens/SavedScreen";
 import BookingScreen from "../screens/BookingScreen";
 import Profile from "../screens/ProfileScreen";
 import SearchScreen from "../screens/SearchScreen";
-import { AntDesign, EvilIcons } from '@expo/vector-icons';
 import ProfileScreen from "../screens/ProfileScreen";
+import PlacesScreen from "../screens/PlacesScreen";
+import { AntDesign, EvilIcons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -90,22 +91,23 @@ const StackNavigator = () => {
                             backgroundColor: "#003585",
                         },
                         headerRight: () => (
-                            <EvilIcons  
-                              name="bell" 
-                              size={24} 
-                              color="black"
-                              style={{marginRight: 12, color: "white"}}
+                            <EvilIcons
+                                name="bell"
+                                size={24}
+                                color="black"
+                                style={{ marginRight: 12, color: "white" }}
                             />
                         )
                     }}
                 />
-                <Stack.Screen 
-                  name="Search" 
-                  component={SearchScreen} 
-                  options={{
-                    headerShown: false
-                  }}
+                <Stack.Screen
+                    name="Search"
+                    component={SearchScreen}
+                    options={{
+                        headerShown: false
+                    }}
                 />
+                <Stack.Screen name="Places" component={PlacesScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )

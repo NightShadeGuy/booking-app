@@ -7,7 +7,8 @@ import {
     Pressable,
     TextInput,
     Button,
-    Image
+    Image,
+    Alert
 } from "react-native";
 import Header from "../components/Header";
 import { Feather, AntDesign } from '@expo/vector-icons';
@@ -20,20 +21,36 @@ import {
     ModalTitle,
     SlideAnimation
 } from "react-native-modals";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 
 const HomeScreen = () => {
     const { container, input, searchText, value, textCount } = styles;
 
-   const navigation = useNavigation();
+    const navigation = useNavigation();
+    const route = useRoute();
 
     const [selectedDates, setSelectedDates] = useState(null);
     const [rooms, setRooms] = useState(1);
     const [adults, setAdults] = useState(2);
     const [childrens, setChildrens] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
-    console.log(selectedDates);
+
+    const searchPlaces = (place) => {
+        if(!route.params || !selectedDates) {
+            Alert.alert("Invalid Details", "Please enter all details")
+        }
+
+        if(route.params && selectedDates) {
+            navigation.navigate("Places", {
+                rooms: rooms,
+                adults: adults,
+                childrens: childrens,
+                selectedDates: selectedDates,
+                place: place
+            });
+        }
+    }
 
     const CustomButton = (onConfirm) => {
         return (
@@ -56,10 +73,12 @@ const HomeScreen = () => {
                 <ScrollView>
                     <View style={container}>
                         {/* Destination */}
-                        <Pressable style={input}>
+                        <Pressable style={input}
+                            onPress={() => navigation.navigate("Search")}
+                        >
                             <Feather name="search" size={24} color="black" />
                             <TextInput
-                                placeholder="Enter your destination"
+                                placeholder={ route.params ? route.params.input : "Enter your destination"}
                                 placeholderTextColor="black"
                             />
                         </Pressable>
@@ -115,13 +134,13 @@ const HomeScreen = () => {
                             />
                         </Pressable>
 
-                        {/* Destination */}
+                        {/* Search */}
                         <Pressable
                             style={{
                                 backgroundColor: "#2a52be",
                                 paddingVertical: 20,
                             }}
-                            onPress={() => navigation.navigate("Search")}
+                            onPress={() => searchPlaces(route.params.input)}
                         >
                             <Text style={searchText}>Search</Text>
                         </Pressable>
