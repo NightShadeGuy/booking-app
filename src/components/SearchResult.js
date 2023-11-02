@@ -11,8 +11,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const SearchResult = ({ data, input, setInput }) => {
     const navigation = useNavigation();
-    console.log(data);
-
 
     return (
         <View style={styles.container}>
