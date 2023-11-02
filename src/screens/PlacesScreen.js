@@ -56,7 +56,17 @@ const PlacesScreen = () => {
         {data?.
           filter(item => item.place === route.params.place)
           .map(item =>
-            item.properties.map((property, index) => <PropertyCard />))
+            item.properties.map((property, index) => (
+              <PropertyCard
+                key={index}
+                rooms={route.params.rooms}
+                children={route.params.childrens}
+                adults={route.params.adults}
+                selectedDates={route.params.selectedDates}
+                property={property}
+                availableRooms={property.rooms}
+              />
+            )))
         }
       </ScrollView>
     </View>
